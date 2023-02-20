@@ -5,6 +5,8 @@ There is no magic behind it, this text is indeed physical just like the pages of
 
 Transistors store electricity in different voltage levels depending on the content they store. In the 7400 chip for example, when a transistor voltage is between 0–0.8v it signifies a logical 0 or off state, if a transistor voltage is between 2–5v it signifies a logical 1 or on state [1]. Intel has created a very insightful video of the evolution of transistors, please feel free to watch it below.
 
+[https://www.youtube.com/watch?v=Z7M8etXUEUU](https://www.youtube.com/watch?v=Z7M8etXUEUU)
+
 When coding your next React Native component, don't forget that you are controlling how electricity is stored in transistors. Even though we have little control over transistors from the JavaScript side, good engineering principles will also be reflected on the amount of transistors we use and the amount of clock cycles - also a very important concept that determines speed of execution - needed to execute an operation.
 
 In terms of CPU clock cycle, it may help to think of it similar to how smart contracts use "gas"[2] to perform different tasks[3]. However, it is difficult to get a sense of clock cycles needed to run our JavaScript code without first seeing the machine code.
