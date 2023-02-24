@@ -1,4 +1,6 @@
 # JavaScript and Transistors
+https://medium.com/@carlosalmonte04/javascript-and-transistors-5f3c5ff8d42b
+
 This text you are reading right now is stored somewhere in your device. Somewhere in the RAM there is a sequence of on/off elements that represent this blog post. And just how you read content on a piece of paper, you read the contents of your RAM through the screen. This is so seamless that we forget how physical this process is.
 
 There is no magic behind it, this text is indeed physical just like the pages of a book, instead of ink and paper the contents are written into very tiny containers called transistors.
