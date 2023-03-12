@@ -11,7 +11,7 @@ Before, when all of these app launch statements lived in AppDelegate.m, we had t
 
 **All of this:**
 
-```
+```objective-c
 // RCTAppDelegate.m#application
 /*
   A lot of these statements used to live in AppDelegate.m
@@ -57,7 +57,7 @@ Before, when all of these app launch statements lived in AppDelegate.m, we had t
 
 **Got taken away from our control and turned into a single function call, like this:**
 
-```
+```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   self.moduleName = @"GrabFormInputExample";
@@ -71,7 +71,7 @@ Before, when all of these app launch statements lived in AppDelegate.m, we had t
 ![Michael Scott from the office walking out the door, shouting and raising arms and hands](https://user-images.githubusercontent.com/25206487/224523220-dcc0d17c-feed-4184-af9d-f925cfb73372.gif)
 
 This is a lot less code we no longer need to worry about, but modules like react-native-splash-screen need the JavaScript to run before their instantiation.
-```
+```objective-c
 // Before - does not work
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -86,7 +86,7 @@ This is a lot less code we no longer need to worry about, but modules like react
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 ```
-```
+```objective-c
 // After - Works
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -113,7 +113,7 @@ But in the "Before" case above, JavaScript is not launched until the [super appl
 While we wait for fixes at the modules level or from react native, please have a look again at a temporary fixes below, use at your discretion as its results might be different depending on your needs.
 
 Option 1: change AppDelegate.m as opposed to the next option, this option will remain in place even after running npm install or yarn.
-```
+```objective-c
 // Before - does not work
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -127,7 +127,7 @@ Option 1: change AppDelegate.m as opposed to the next option, this option will r
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 ```
-```
+```objective-c
 // After - Works
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -150,7 +150,7 @@ Option 1: change AppDelegate.m as opposed to the next option, this option will r
 Option 2: change react-native-splash-screen remember to use something like https://www.npmjs.com/package/patch-package to keep changes through npm install or yarn.
 
 Within node_modules/react-native-splash-screen/ios/NSplashScreen.m#show remove the while loop and change the dateWithTimeIntervalSinceNow:0.1time to a custom amount of seconds. 
-```
+```objective-c
 // node_modules/react-native-splash-screen/ios/RNSplashScreen.m#show
 // Before
 + (void)show {
@@ -165,7 +165,7 @@ Within node_modules/react-native-splash-screen/ios/NSplashScreen.m#show remove t
     } // remove
 }
 ```
-```
+```objective-c
 // After
 + (void)show {
     if (!addedJsLoadErrorObserver) {
