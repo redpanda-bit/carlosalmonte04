@@ -1,11 +1,12 @@
 ![elegant-colorful-splash-watercolor-background-free-vector](https://user-images.githubusercontent.com/25206487/224523226-5ff09764-b158-4f06-826d-4640cf9a7df5.jpeg)
 # React Native App Not Loading Bundle, react-native-splash-screen
+https://medium.com/@carlosalmonte04/react-native-app-not-loading-bundle-react-native-splash-screen-ad3e3fa3e1e9
 
-There is an issue implementing react native splash screen on the latest versions of react native. The app freezes at the splash screen and does not show any signs of loading on metro bundler. 
+There is an issue implementing react native splash screen on the latest versions of react native. The app freezes at the splash screen and does not show any signs of loading on metro bundler.
 
 ![Metro bundler at the terminal with no signs of loading bundle](https://user-images.githubusercontent.com/25206487/224523259-e77ef7a2-2138-49f8-8a3e-b6c667aa4b21.png)
 
-The new react native launch process was abstracted into its own file, RCTAppDelegate.m, where the bridge and rootView are instantiated, new architecture is enabled and the app window is made visible. My assumption is that AppDelegate.m kept getting larger and larger after the addition of new architecture code, so abstracting many of the statements seemed like the correct thing to do - according to good engineering principles.
+The new react native launch process was abstracted into its own file, RCTAppDelegate.m, where the bridge and rootView are instantiated, new architecture is enabled and the app window is made visible. My assumption is that AppDelegate.m kept getting larger and larger after the addition of new architecture code, so abstracting many of the statements seemed like the correct thing to do — according to good engineering principles.
 
 Before, when all of these app launch statements lived in AppDelegate.m, we had the opportunity to instantiate third party modules after the JavaScript communication had been established. Now there is less opportunity to instantiate modules anywhere in the launch process since all of the important steps were abstracted into a single method and packaged within the react-native module.
 
@@ -71,6 +72,7 @@ Before, when all of these app launch statements lived in AppDelegate.m, we had t
 ![Michael Scott from the office walking out the door, shouting and raising arms and hands](https://user-images.githubusercontent.com/25206487/224523220-dcc0d17c-feed-4184-af9d-f925cfb73372.gif)
 
 This is a lot less code we no longer need to worry about, but modules like react-native-splash-screen need the JavaScript to run before their instantiation.
+
 ```objective-c
 // Before - does not work
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -108,11 +110,12 @@ This is a lot less code we no longer need to worry about, but modules like react
 ```
 The temporary thread-block caused by [RNSplashScreen show] would be removed from the JavaScript side using RNSplashScreen.hide();, I know we generally avoid blocking the thread, at least from my JavaScript knowledge, however, this thread-block a seems to be safe. It shows the splash screen, blocks the thread by executing a while loop inside the react-native-splash-screen module, and it waits for JavaScript to stop the while loop and hide the splash screen. Again, sounds like a legitimate need for a thread-block.
 
-But in the "Before" case above, JavaScript is not launched until the [super application:application didFinishLaunchingWithOptions:launchOptions] call, which happens after the [RNSplashScreen show] call. Therefore, the app freezes with a splash screen that has no JavaScript ready to remove the thread-block.
+But in the “Before” case above, JavaScript is not launched until the [super application:application didFinishLaunchingWithOptions:launchOptions] call, which happens after the [RNSplashScreen show] call. Therefore, the app freezes with a splash screen that has no JavaScript ready to remove the thread-block.
 
 While we wait for fixes at the modules level or from react native, please have a look again at a temporary fixes below, use at your discretion as its results might be different depending on your needs.
 
-Option 1: change AppDelegate.m as opposed to the next option, this option will remain in place even after running npm install or yarn.
+**Option 1: change AppDelegate.m** _as opposed to the next option, this option will remain in place even after running npm install or yarn._
+
 ```objective-c
 // Before - does not work
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -147,9 +150,10 @@ Option 1: change AppDelegate.m as opposed to the next option, this option will r
 }
 ```
 
-Option 2: change react-native-splash-screen remember to use something like https://www.npmjs.com/package/patch-package to keep changes through npm install or yarn.
+**Option 2: change react-native-splash-screen** _remember to use something like https://www.npmjs.com/package/patch-package to keep changes through npm install or yarn._
 
-Within node_modules/react-native-splash-screen/ios/NSplashScreen.m#show remove the while loop and change the dateWithTimeIntervalSinceNow:0.1time to a custom amount of seconds. 
+Within node_modules/react-native-splash-screen/ios/NSplashScreen.m#show remove the while loop and change the dateWithTimeIntervalSinceNow:0.1time to a custom amount of seconds.
+
 ```objective-c
 // node_modules/react-native-splash-screen/ios/RNSplashScreen.m#show
 // Before
