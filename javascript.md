@@ -64,7 +64,7 @@ int main()
 ```
 _Quite an accomplishment for a JavaScript Engineer._
 
-~[Andy Bernard from The Office turning around to wink at the camera](https://media.giphy.com/media/B9KKBuOIp4zqI7Cll0/giphy-downsized-large.gif)
+![Andy Bernard from The Office turning around to wink at the camera](https://media.giphy.com/media/B9KKBuOIp4zqI7Cll0/giphy-downsized-large.gif)
 
 This is the JavaScript equivalent:
 ```javascript
