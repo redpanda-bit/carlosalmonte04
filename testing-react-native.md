@@ -4,7 +4,8 @@
 https://medium.com/@carlosalmonte04/testing-react-native-apps-6fa76d238097
 
 Best case scenario your application is the most reliable application ever. It loads the data it needs to load and fails gracefully when it can't. Easier said than done. Having your application deliver what it promises at the speed you expect is a very difficult task.
-"But it was working on my computer", of course, your environment is the only one with <insert unique tool that you also had to patch to have your app work>. _- if you have experienced try using containers._
+
+"It was working on my computer", of course, your environment is the only one with <insert unique tool that you also had to patch to have your app work> :). _- if you have experienced try using containers._
   
 In order to have your app work as expected, consistently and everywhere you have to test it.
 
