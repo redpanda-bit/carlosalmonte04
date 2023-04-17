@@ -1,7 +1,7 @@
 ![tic-tac-toe with animation keyframes as circles https://dribbble.com/shots/5536601-Tic-Tac-Toe](https://cdn-images-1.medium.com/max/800/1*uajloqjAHUBCVKC8RQ2lhw.png)
 
 # Frames in react native - Android
-LINK TO MEDIUM POST
+https://medium.com/@carlosalmonte04/frames-in-react-native-android-7b5c4429378e
 
 Animations are a bunch of images displayed in order at such speed that it seems like a fluid motion. When it takes too long to figure out the next image will be, the animation experiences a noticeable interruption by appearing as if the fluid motion was stuck. This experience is a result of the same frame being displayed for longer than expected.
 
