@@ -1,7 +1,7 @@
 ![tools with emoji-like texture as main post image](https://cdn-images-1.medium.com/max/800/1*L_cBCqPkdlCNbHJ5gtSwpw.png)
 
 # Frames in react native - iOS
-LINK TO MEDIUM POST
+https://medium.com/@carlosalmonte04/frames-in-react-native-ios-b05bd1146a00
 
 When an animation experiences a noticeable interruption in the sequence of frames is called a hitch. A hitch takes place when the calculation of the new frame takes longer than expected, causing the new frame to be displayed past the deadline. These calculations can take place during the commit phase or render phase of the render loop (=user event - > user event handled by the application to determine UI changes - > new frame with UI changes created by the operating system to be displayed on the screen -> wait for the next user event).
 
