@@ -11,7 +11,7 @@ The commit phase happens inside our application in response to user events. This
 
 The render phase has to do with GPU related code, technically outside of our direct control. However, we can speed up the render phase by avoiding the usage of styles that are more difficult to calculate such as visual effects, dynamic shadows, and rounded rectangles. These use what is called offscreen render and this makes the render phase take extra time to compute required styling by rendering the layer somewhere else and then copying it over to the final texture. These are probably more noticeable as the app grows in complexity.
 
-**Be mindful that Instruments will not tell you the specific line of code that need investigation but the phase that caused the animation hitch. Thorough investigation may be needed in order to successfully debug the hitch. **
+**Be mindful that Instruments will not tell you the specific line of code needing investigation but the phase causing the animation hitch. Thorough investigation may be needed in order to successfully debug the hitch.**
 
 
 ![Homer Simpson using scare tactics to cure Marge :)](https://media.giphy.com/media/3o6MbehxBdCnpDxOWA/giphy.gif)
