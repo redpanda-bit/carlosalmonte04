@@ -1,0 +1,12 @@
+## Frontend Hardware
+As frontend developers, we rely on so much abstraction that is stripped from our understanding. We learn writing code that tells devices how an animation should look like; e.g., animation: 3s ease-in 1s infinite, as opposed to how the device should achieve such animation, bare with me, this intro will make more sense soon. Long story short, animations are a sequence of frames and frames are a sequence of binary digits for each pixel. Let's dive into the hardware.
+
+Most real-world colors are a combination of various levels of red, green and blue. If you were willing to devote 2 bytes per pixel you could allocate 5 bits for each primary color (with 1 bit left over; 5 bits x 3 colors = 15bits + 1bit left over). This scheme is often referred to as high-color or thousands of colors. 15 bits allows for 32,768 possible color variations.
+
+The next step is to use 3 bytes per pixel or 1 byte for each primary. This encoding scheme results in 256 colors of red, 256 colors of blue and 256 colors of red. This is often referred to as full color or millions of colors; 3 bytes allow for 16,777,216 (256³) color variations.
+The number of bits per pixels is called color-depth or color resolution.
+
+Linking back to our frontend engineering knowledge, 6 hexadecimals characters are commonly used in frontend development to represent colors; e.g., #898989. Hence my assumption is that we use full color scheme due to 6 hexadecimal characters being equivalent to 3 bytes or 24 bits which gives us the full color or millions of colors variations.
+
+The image of a video display is actually components of a single continuous beam of light thtat sweeps accross the screen very rapidly. It begins in the upper left corner and moves accross the screen to the right, whereupon it zips back to the left to begin the second line. Each horizontal line is known as the scan line. The movement back to the beginning of each of those lines is known as the horizontal retrace. When the beam finishes at the bottom line, it zips from the lower right corner of the screen to the upper left corner (the vertical retrace) and the process begins again.
+
