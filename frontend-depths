@@ -1,12 +1,20 @@
-## Frontend Hardware
-As frontend developers, we rely on so much abstraction that is stripped from our understanding. We learn writing code that tells devices how an animation should look like; e.g., animation: 3s ease-in 1s infinite, as opposed to how the device should achieve such animation, bare with me, this intro will make more sense soon. Long story short, animations are a sequence of frames and frames are a sequence of binary digits for each pixel. Let's dive into the hardware.
+# Notes - Graphics revolution
+As frontend developers, I believe we rely on so much abstraction that is stripped from our understanding. We learn writing code that tells devices how an animation should look like, as opposed to telling devices how to achieve such animation. In order to distribute my knowledge of these abstractions I decided to post my notes related to how screens create/display frames and also how they produce the impression of motion.
+# How do screens work?
 
+## Static
 Most real-world colors are a combination of various levels of red, green and blue. If you were willing to devote 2 bytes per pixel you could allocate 5 bits for each primary color (with 1 bit left over; 5 bits x 3 colors = 15bits + 1bit left over). This scheme is often referred to as high-color or thousands of colors. 15 bits allows for 32,768 possible color variations.
-
 The next step is to use 3 bytes per pixel or 1 byte for each primary. This encoding scheme results in 256 colors of red, 256 colors of blue and 256 colors of red. This is often referred to as full color or millions of colors; 3 bytes allow for 16,777,216 (256³) color variations.
 The number of bits per pixels is called color-depth or color resolution.
+We usually use the full color scheme in frontend development. When declaring colors, is common to see them being represented as hexadecimals characters, which are equivalent to 3 bytes or 24 bits which gives us the full color or millions of colors variations. - Each hexadecimal character represents 4 bits.
+Here is a useful picture showing pixel and their RGB values.
+The very first pixel of value red: 34, green: 32, and blue: 79 can be represented as red: 0b00100010, green: 0b00100000, and blue: 0b01001111. Altogether: 0b001000100010000001001111 or in hex #2220ff: Somewhere in our devices there is a data structure containing binary data, representing the colors of each pixel in the screen, this is called the framebuffer and its values are transferred to the screen where they are converted to analog voltages mapped to the different colors. If you wanted to hack the device's screen and draw/write on top of existing frames, the framebuffer is a good starting place. See this post if you would like some knowledge on modifying the framebuffer. - for security reasons, the framebuffer is unreachable unless you jailbreak your device.
+This explain static images, what happens something in the screen moves?
 
-Linking back to our frontend engineering knowledge, 6 hexadecimals characters are commonly used in frontend development to represent colors; e.g., #898989. Hence my assumption is that we use full color scheme due to 6 hexadecimal characters being equivalent to 3 bytes or 24 bits which gives us the full color or millions of colors variations.
-
-The image of a video display is actually components of a single continuous beam of light thtat sweeps accross the screen very rapidly. It begins in the upper left corner and moves accross the screen to the right, whereupon it zips back to the left to begin the second line. Each horizontal line is known as the scan line. The movement back to the beginning of each of those lines is known as the horizontal retrace. When the beam finishes at the bottom line, it zips from the lower right corner of the screen to the upper left corner (the vertical retrace) and the process begins again.
-
+## Motion
+The image of a video display is actually components of a single continuous beam of light that sweeps across the screen very rapidly. It begins in the upper left corner and moves across the screen to the right, whereupon it zips back to the left to begin the second line. Each horizontal line is known as the scan line. The movement back to the beginning of each of those lines is known as the horizontal retrace. When the beam finishes at the bottom line, it zips from the lower right corner of the screen to the upper left corner, this movement is known as the vertical retrace and it is the last event of the frame drawing before the process starts over.
+This process allows the display of different frames at a speed of, usually, 60 frames per second. Fast enough to appear as a fluid motion on the screen.
+Conclusion
+Knowing the hardware limitations and understanding how screen works might give you an advantage over other engineers who do not know the hardware. Perhaps there are more ways  to circumvent limitations given by the mobile development environment giving you access to features beyond its limitations. Having access to each of the pixel colors before display can enable us to freely draw on the screen. Also, having access to the frames of a given motion can enable us to alter such motion beyond the framework's limits. Most likely not the most useful skill to have, fun nonetheless.
+References
+https://bellis1000.medium.com/exploring-the-ios-screen-frame-buffer-a-kernel-reversing-experiment-6cbf9847365
