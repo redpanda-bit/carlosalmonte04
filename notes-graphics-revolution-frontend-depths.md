@@ -40,7 +40,7 @@ The image of a video display is actually components of a single continuous beam 
 
 This process allows the display of a new frame 60 times per second. Each new frame independent from the last one. Each frame carried by a process fast enough that it appear as a fluid motion on the screen.
 
-![Cece, Coach and Nick from New Girl - Coach shaking shoulders - reverse loop](https://giphy.com/gifs/foxtv-new-girl-coach-ylyUQniEurdl6EmhwI)
+![Cece, Coach and Nick from New Girl - Coach shaking shoulders - reverse loop](https://media.giphy.com/media/ylyUQniEurdl6EmhwI/giphy.gif)
 
 I don't have a technical fun picture for motion hacking. Sorry.
 
