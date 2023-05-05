@@ -1,8 +1,11 @@
----
 ![Mario Brothers graphic displayed within MacOS application](https://miro.medium.com/v2/resize:fit:720/format:webp/1*WRrcFK7-t_eIxsU6fjtGyQ.jpeg)
 
 # Notes - Graphics revolution - Frontend Depths
 https://medium.com/@carlosalmonte04/notes-graphics-revolution-frontend-depths-2024d4befcb3
+
+_TL;DR: On iOS, what we see on the screen is determined by the values stored at the framebuffer. Locating the framebuffer in memory and modifying it lets you do cool stuff such as drawing on top of existing content, see the picture below. Access to the framebuffer is a security vulnerability, and it can only be done on jailbroken devices._
+
+![https://cdn-images-1.medium.com/max/800/1*vKSJnKTY-cibFf727Qlccw.jpeg](https://cdn-images-1.medium.com/max/800/1*vKSJnKTY-cibFf727Qlccw.jpeg)
 
 As frontend developers, we rely on so much abstraction that is stripped from our understanding. We learn writing code that tells devices how an animation should look like, as opposed to telling devices how to achieve such animation. In order to gain more knowledge of these abstractions I decided to post my notes related to how screens work, how they are able to display frames and also how they produce the impression of motion.
 
