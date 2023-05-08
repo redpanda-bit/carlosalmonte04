@@ -1,11 +1,10 @@
 ### Hi there 👋
 
 - 🔭 I’m currently working on open source projects
-- 🌱 I’m currently learning Kotlin
+- 🌱 I’m currently learning open source
 - 💬 Ask me about React Native
 - 📫 How to reach me: https://instagram.com/carlosalmonte04
 - 😄 Pronouns: He/him/his
-- ⚡ Fun fact: I like the outdoors!
 
 - I am also working on a react native project which will should serve as a boilerplate for well tested and production ready react native apps.
 - - Using the new architecture
