@@ -4,3 +4,5 @@
 Imperative is when you tell hardware or api's how to achieve a task. For e.g., picture.show(); to display a picture vs frameData.changePixels(pixelsArray, pixelsArrayData);
 
 We build tools using imperative programming to enable declarative programming, since declarative programming is more human oriented.
+
+https://snack.expo.dev/6Q_ewNx2S
